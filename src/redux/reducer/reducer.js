@@ -16,6 +16,15 @@ function reducer(state = initialState, action) {
           },
         ],
       };
+    case 'SEARCH_CONTACT':
+      return {
+        ...state,
+        contactList: state.contactList.filter(
+          (item) =>
+            item.name.includes(payload.keyword) ||
+            item.phoneNumber.includes(payload.keyword)
+        ),
+      };
     default:
       return { ...state };
   }
